@@ -122,6 +122,6 @@ class ViT(nn.Module):
         x = self.dropout(x)
 
         x = self.transformer(x, mask)
-
-        x = self.to_cls_token(x[:, 0])
+        # 在这里提取 关键点数量个数
+        x = self.to_cls_token(x[:, 0]) # [batch_size, embedding]
         return self.mlp_head(x)
